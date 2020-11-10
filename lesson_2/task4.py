@@ -5,7 +5,7 @@ from math import pow
 
 
 def get_sum(start, degree):
-    if n == 0:
+    if degree == 0:
         return 0
     current = start / pow(-2, (degree - 1))
     return current + get_sum(start, degree - 1)
