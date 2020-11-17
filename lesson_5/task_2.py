@@ -82,10 +82,8 @@ if __name__ == '__main__':
     first_num, optype, second_num = input("Введите операцию (hex1 +* hex2): ").strip().split()
 
     if optype == '+':
-        # print(hex(int(first_num, 16) + int(second_num, 16)))
         res = hex_sum(list(first_num), list(second_num))
     else:
-        # print(hex(int(first_num, 16) * int(second_num, 16)))
         res = hex_multi(list(first_num), list(second_num))
 
     print(f'>>>', ''.join(_num2hex(i) for i in res))

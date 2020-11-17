@@ -19,7 +19,7 @@ print(f"Средняя прибыль компаний: {mid_income:.3f}")
 
 comp_stats = namedtuple("CompsStats", "more_av less_av")([], [])
 for company, income_inf in comps_info.items():
-    if sum(income_inf) >= mid_income:
+    if sum(income_inf) > mid_income:
         comp_stats.more_av.append(company)
     else:
         comp_stats.less_av.append(company)
