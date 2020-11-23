@@ -29,7 +29,7 @@ def _merge_sort_1(array, left, right, reverse, key):
 
 
 def merge_sort_1(array, reverse=False, key=lambda x: x):
-    return _merge_sort_1(array, 0, len(array) - 1, bool(reverse), key)
+    return _merge_sort_1(array, 0, len(array) - 1, not bool(reverse), key)
 
 
 # Просто из интереса решил немного другим путём написать
@@ -58,7 +58,7 @@ def _merge_sort_2(array, left, right, reverse, key):
 
 
 def merge_sort_2(array, reverse=False, key=lambda x: x):
-    return iter(_merge_sort_2(array, 0, len(array) - 1, bool(reverse), key))
+    return iter(_merge_sort_2(array, 0, len(array) - 1, not bool(reverse), key))
 
 
 def test_time(command, ncalls):
