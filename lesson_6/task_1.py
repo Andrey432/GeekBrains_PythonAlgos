@@ -97,3 +97,48 @@ if __name__ == '__main__':
         print('Function', f.__name__, end='\n\n')
         f(array)
         print()
+
+
+# Global namespace
+#
+# ITEMS: type 'int' 28 bytes
+# MIN_ITEM: type 'int' 28 bytes
+# MAX_ITEM: type 'int' 28 bytes
+# array: type 'list' 1152 bytes     <-- данная переменная будет далее передаваться в функции,
+#                                       так что её размер можно в них не учитывать. Хотел написать класс,
+#                                       чтобы избежать повторного замера таких переменных, но больно геморно вышло
+# funcs: type 'tuple' 64 bytes
+# Total memory usage: 1300 bytes
+#
+# Function solution_1
+#
+# sequence: type 'list' 1152 bytes
+# first_min_ind: type 'int' 28 bytes
+# second_min_ind: type 'int' 28 bytes
+# first_min_val: repeated
+# second_min_val: repeated
+# i: repeated
+# item: repeated
+# Total memory usage: 1208 bytes
+#
+# Function solution_2
+#
+# sequence: type 'list' 1152 bytes
+# sequence_c: type 'list' 296 bytes
+# min_1: type 'int' 28 bytes
+# min_2: type 'int' 28 bytes
+# Total memory usage: 1504 bytes
+#
+# Function solution_3
+#
+# sequence: type 'list' 1152 bytes
+# sorted_seq: type 'list' 2716 bytes
+# Total memory usage: 3868 bytes
+#
+#
+# 1-ая функция самая экономная, т.к. память расходуется только на несколько доп. int переменных
+# 2-ая также относительно экономная, т.к. память в основном расходуется на создание списка,
+# а хранящиеся в нём элементы идентичны элементам оригинальной коллекции
+# 3-я функция очень прожорлива, т.к.:
+# 1) Для каждого элемента создаётся tuple, который хранит его позицию
+# 2) Создаётся список, который все эти tuple хранит
