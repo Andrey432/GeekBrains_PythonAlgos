@@ -2,8 +2,6 @@ from heapq import heappush, heappop, heapify
 from collections import Counter, namedtuple
 
 
-# Вышло гораздо меньше, чем ожидал)
-
 class Node(namedtuple('Node', 'priority letter left right')):
     # Избегаем последовательного сравнения всех элементов кортежа
     def __lt__(self, other):
@@ -43,5 +41,21 @@ def compression(text):
     return ' '.join(letters_table[c] for c in text), letters_table
 
 
-print(*compression('Hello, world!'), sep='\n', end='\n\n')
-print(*compression('beep boor beer!'), sep='\n')
+def _test(text_len):
+    from random import randint
+    from timeit import timeit
+
+    print('Generate numbers...', end=' ')
+    string = ''.join(chr(randint(ord('a'), ord('z'))) for _ in range(text_len))
+    print('Done')
+
+    func = compression
+    print('Start compression')
+    print(f'time: {timeit("func(string)", number=1, globals=locals())}')
+
+
+if __name__ == '__main__':
+    print(*compression('Hello, world!'), sep='\n', end='\n\n')
+    print(*compression('beep boor beer!'), sep='\n', end='\n\n')
+
+    # _test(1000000)  # Даже по скорости неплохо вышло. 1 000 000 - 0.25 сек на моём ноуте. Линейная зависимость
